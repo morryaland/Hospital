@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS Event (
+  Id INT PRIMARY KEY AUTO_INCREMENT,
+  Name VARCHAR(20) NOT NULL,
+  EventTime DATETIME,
+  Result VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS TherapeuticMeasures (
+  Id INT PRIMARY KEY AUTO_INCREMENT,
+  PacientId INT,
+  DoctorId INT,
+  EventId INT,
+  `Type` ENUM(''),
+  Recommendations VARCHAR(20),
+  FOREIGN KEY (EventId) REFERENCES Event(Id)
+);
