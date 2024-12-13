@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS Pacient (
   InsurancePolicyExpiration DATE NOT NULL,
   Diagnosis VARCHAR(20),
   MedicalHistory VARCHAR(20)
-)
+);
