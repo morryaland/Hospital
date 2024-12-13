@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Pacient (
   Id INT PRIMARY KEY AUTO_INCREMENT,
-  PersonId INT NOT NULL,
+  PersonId INT,
   MedicalCardNumber INT NOT NULL,
   medicalCardIssuance INT NOT NULL,
   LastAppeal DATE,
