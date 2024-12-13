@@ -1,0 +1,2 @@
+ALTER TABLE Pacient
+  ADD FOREIGN KEY(PacientId) REFERENCES Person(Id);
