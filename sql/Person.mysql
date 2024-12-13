@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS Pacient (
+  Id INT PRIMARY KEY AUTO_INCREMENT,
+  Photo BLOB,
+  Surname VARCHAR NOT NULL,
+  Name VARCHAR NOT NULL,
+  Patronymic VARCHAR,
+  PasportNumber INT,
+  PasportSerial INT,
+  Birthday DATE NOT NULL,
+  Sex ENUM NOT NULL,
+  HomeAddress VARCHAR,
+  PhoneNumber VARCHAR UNIQUE,
+  Email VARCHAR UNIQUE
+)
