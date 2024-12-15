@@ -1,2 +1,0 @@
-ALTER TABLE Pacient
-  ADD FOREIGN KEY(PersonId) REFERENCES Person(Id);
