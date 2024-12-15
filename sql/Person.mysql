@@ -1,3 +1,5 @@
+CREATE TYPE SEX AS ENUM('man', 'female');
+
 CREATE TABLE IF NOT EXISTS Person (
   Id INT PRIMARY KEY AUTO_INCREMENT,
   Photo BLOB,
@@ -7,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Person (
   PasportNumber INT,
   PasportSerial INT,
   Birthday DATE NOT NULL,
-  Sex ENUM('man', 'female') NOT NULL,
+  Sex SEX NOT NULL,
   HomeAddress VARCHAR(20),
   PhoneNumber VARCHAR(20) UNIQUE,
   Email VARCHAR(20) UNIQUE

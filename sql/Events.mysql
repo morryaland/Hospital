@@ -1,6 +1,9 @@
+CREATE TYPE EVENTTYPE AS ENUM('laboratory research', 'instrumental diagnostics', 'drug therapy', 'physiotherapy', 'surgical treatment');
+
 CREATE TABLE IF NOT EXISTS Event (
   Id INT PRIMARY KEY AUTO_INCREMENT,
   Name VARCHAR(20) NOT NULL,
+  `Type` EVENTTYPE NOT NULL,
   EventTime DATETIME,
   Result VARCHAR(20)
 );
@@ -10,7 +13,6 @@ CREATE TABLE IF NOT EXISTS TherapeuticMeasures (
   PacientId INT,
   DoctorId INT,
   EventId INT,
-  `Type` ENUM(''),
   Recommendations VARCHAR(20),
   FOREIGN KEY (EventId) REFERENCES Event(Id)
 );

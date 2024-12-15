@@ -1,11 +1,9 @@
 {
-  "connection": [{
-    "name": "sql-language-server",
-    "adapter": "mysql",
-    "host": "localhost",
-    "port": 3306,
-    "database": "Hospital",
-    "login": "muly",
-    "password": "myli"
-  }]
+  "name": "sql-language-server",
+  "adapter": "mysql",
+  "host": "192.168.1.73",
+  "port": 3306,
+  "user": "muly",
+  "password": "myli",
+  "database": "Hospital"
 }
