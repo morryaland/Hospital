@@ -1,0 +1,49 @@
+CREATE TABLE IF NOT EXISTS Person (
+  Id INT PRIMARY KEY AUTO_INCREMENT,
+  Photo BLOB,
+  Surname VARCHAR(20) NOT NULL,
+  Name VARCHAR(20) NOT NULL,
+  Patronymic VARCHAR(20),
+  PasportNumber INT,
+  PasportSerial INT,
+  Birthday DATE NOT NULL,
+  Sex ENUM('man', 'female') NOT NULL,
+  HomeAddress VARCHAR(20),
+  PhoneNumber VARCHAR(20) UNIQUE,
+  Email VARCHAR(20) UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS Pacient (
+  Id INT PRIMARY KEY AUTO_INCREMENT,
+  PersonId INT,
+  MedicalCardNumber INT NOT NULL,
+  medicalCardIssuance INT NOT NULL,
+  LastAppeal DATE,
+  NextAppeal DATETIME,
+  InsurancePolicyNumber INT NOT NULL,
+  InsurancePolicyExpiration DATE NOT NULL,
+  Diagnosis VARCHAR(20),
+  MedicalHistory VARCHAR(20),
+  FOREIGN KEY (PersonId) REFERENCES Person(Id)
+);
+
+CREATE TABLE IF NOT EXISTS Event (
+  Id INT PRIMARY KEY AUTO_INCREMENT,
+  Name VARCHAR(20) NOT NULL,
+  `Type` 
+  ENUM('laboratory research', 'instrumental diagnostics', 'drug therapy', 'physiotherapy', 'surgical treatment')
+  NOT NULL,
+  EventTime DATETIME,
+  Result VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS TherapeuticMeasures (
+  Id INT PRIMARY KEY AUTO_INCREMENT,
+  PacientId INT,
+  DoctorId INT,
+  EventId INT,
+  Recommendations VARCHAR(20),
+  FOREIGN KEY (PacientId) REFERENCES Pacient(Id),
+  FOREIGN KEY (DoctorId) REFERENCES Person(Id),
+  FOREIGN KEY (EventId) REFERENCES Event(Id)
+);
