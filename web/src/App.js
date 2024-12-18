@@ -1,6 +1,5 @@
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import PacientForm from './PacientForm.js';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {

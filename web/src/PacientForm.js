@@ -1,7 +1,9 @@
+import PersonForm from './PersonForm';
+
 function PacientForm()
 {
   return (
-    <p>lol</p>
+    <PersonForm />
   );
 }
 
