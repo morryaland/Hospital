@@ -6,8 +6,10 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <div className='App-header'>
+      <div className="App-header">
         <Link to="pacient">Регистрация пациентов</Link>
+        <Link to="hospitalizacion">Госпитализация</Link>
+        <Link to="event">Направление пациентов</Link>
       </div>
       <Routes>
         <Route path="pacient" element={<PacientForm/>}/>
