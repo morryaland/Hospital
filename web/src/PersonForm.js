@@ -21,14 +21,14 @@ function PersonForm(props)
       headers: { "Accept": "application/json", "Content-Type": "application/json" },
       body: JSON.stringify({
         surname: surname.current.value,
-        name: name,
-        patronymic: patronymic,
-        sex: sex,
-        pasport: pasport,
-        birthday: birthday,
-        home: home,
-        phone: phone,
-        email: email
+        name: name.current.value,
+        patronymic: patronymic.current.value,
+        sex: sex.current.value,
+        pasport: pasport.current.value,
+        birthday: birthday.current.value,
+        home: home.current.value,
+        phone: phone.current.value,
+        email: email.current.value
       })
     });
     if (!response.ok) {
@@ -39,7 +39,7 @@ function PersonForm(props)
   }
 
   return (
-  <form id='person' onSubmit={CreatePerson}>
+  <form ref={props.formRef} onSubmit={CreatePerson}>
     <label>Фамилия</label>
     <input type="text" ref={surname}/><br/>
     <label>Имя</label>
