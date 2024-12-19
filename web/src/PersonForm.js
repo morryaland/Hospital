@@ -40,27 +40,45 @@ function PersonForm(props)
 
   return (
   <form ref={props.formRef} onSubmit={CreatePerson}>
+        <p>
     <label>Фамилия</label>
     <input type="text" ref={surname}/><br/>
+        </p>
+        <p>
     <label>Имя</label>
     <input type="text" ref={name}/><br/>
+        </p>
+        <p>
     <label>Отчество</label>
     <input type="text" ref={patronymic}/><br/>
+        </p>
+        <p>
     <label>Пол</label>
     <select ref={sex}>
       <option value="man">Мужской</option>
       <option value="female">Женский</option>
     </select><br/>
+        </p>
+        <p>
     <label>Номер и серия паспорта</label>
     <input type="text" ref={pasport}/><br/>
+        </p>
+        <p>
     <label>Дата рождения</label>
     <input type="date" ref={birthday}/><br/>
+        </p>
+        <p>
     <label>Домашний адрес</label>
     <input type="text" ref={home}/><br/>
+        </p>
+        <p>
     <label>Номер телефона</label>
     <input type="text" ref={phone}/><br/>
+        </p>
+        <p>
     <label>Электронная почта</label>
     <input type="email" ref={email}/>
+        </p>
   </form>);
 }
 
