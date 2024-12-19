@@ -1,34 +1,66 @@
-function PersonForm()
+import { useRef } from "react";
+
+function PersonForm(props)
 {
-  
+  const surname = useRef();
+  const name = useRef();
+  const patronymic = useRef();
+  const sex = useRef();
+  const pasport = useRef();
+  const birthday = useRef();
+  const home = useRef();
+  const phone = useRef();
+  const email = useRef();
 
-  function CreatePerson()
+  async function CreatePerson(e)
   {
-
+    e.preventDefault();
+    props.setPersonId();
+    const response = await fetch("/api/person/create", {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({
+        surname: surname.current.value,
+        name: name,
+        patronymic: patronymic,
+        sex: sex,
+        pasport: pasport,
+        birthday: birthday,
+        home: home,
+        phone: phone,
+        email: email
+      })
+    });
+    if (!response.ok) {
+      console.error(response.statusText);
+      return;
+    }
   }
-  return (<form id='person' onSubmit={CreatePerson}>
-    <label>Фамилия: </label>
-    <input type="text"/><br/>
-    <label>Имя: </label>
-    <input type="text"/><br/>
-    <label>Отчество: </label>
-    <input type="text"/><br/>
-    <label>Пол: </label>
-    <select>
+
+  return (
+  <form id='person' onSubmit={CreatePerson}>
+    <label>Фамилия</label>
+    <input type="text" ref={surname}/><br/>
+    <label>Имя</label>
+    <input type="text" ref={name}/><br/>
+    <label>Отчество</label>
+    <input type="text" ref={patronymic}/><br/>
+    <label>Пол</label>
+    <select ref={sex}>
       <option value="man">Мужской</option>
       <option value="female">Женский</option>
     </select><br/>
-    <label>Номер и серия паспорта: </label>
-    <input type="number"/><br/>
-    <label>Дата рождения: </label>
-    <input type="date"/><br/>
-    <label>Домашний адрес: </label>
-    <input type="text"/><br/>
-    <label>Номер телефона: </label>
-    <input type="text"/><br/>
-    <label>Электронная почта: </label>
-    <input type="email"/>
-  </form>)
+    <label>Номер и серия паспорта</label>
+    <input type="text" ref={pasport}/><br/>
+    <label>Дата рождения</label>
+    <input type="date" ref={birthday}/><br/>
+    <label>Домашний адрес</label>
+    <input type="text" ref={home}/><br/>
+    <label>Номер телефона</label>
+    <input type="text" ref={phone}/><br/>
+    <label>Электронная почта</label>
+    <input type="email" ref={email}/>
+  </form>);
 }
 
 export default PersonForm;
