@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import CONFIG from "./config.json"
 
 function PersonForm(props)
 {
@@ -15,8 +16,7 @@ function PersonForm(props)
   async function CreatePerson(e)
   {
     e.preventDefault();
-    props.setPersonId();
-    const response = await fetch("/api/person/create", {
+    const response = await fetch(`${CONFIG.backendUrl}/api/person/create`, {
       method: "POST",
       headers: { "Accept": "application/json", "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -35,6 +35,7 @@ function PersonForm(props)
       console.error(response.statusText);
       return;
     }
+    props.setPersonId(response.json().personId);
   }
 
   return (
