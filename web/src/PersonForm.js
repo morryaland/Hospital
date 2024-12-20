@@ -21,6 +21,7 @@ function PersonForm(props)
       method: "POST",
       headers: { "Accept": "application/json", "Content-Type": "application/json" },
       body: JSON.stringify({
+        photo: photo,
         surname: surname.current.value,
         name: name.current.value,
         patronymic: patronymic.current.value,
