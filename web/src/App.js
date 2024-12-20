@@ -12,6 +12,7 @@ function App() {
       </div>
       <Routes>
         <Route path="pacient" element={<PacientForm/>}/>
+        <Route path="/" element={null}/>
       </Routes>
     </BrowserRouter>
   );

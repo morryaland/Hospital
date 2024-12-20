@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import CONFIG from "./config.json"
 
 function PersonForm(props)
 {
+  const [photo, setPhoto] = useState();
   const surname = useRef();
   const name = useRef();
   const patronymic = useRef();
@@ -38,42 +39,56 @@ function PersonForm(props)
     props.setPersonId(response.json().personId);
   }
 
+  function UploadPhoto(e)
+  {
+    let reader = new FileReader();
+    reader.onload = () => {
+      setPhoto(reader.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  }
+
   return (
   <form ref={props.formRef} onSubmit={CreatePerson}>
         <p>
+    <label>Фото</label><br/>
+    <input type="file" onChange={UploadPhoto}/><br/>
+    <img width="150px" height="150px" src={photo} alt=""/>
+        </p>
+        <p>
     <label>Фамилия</label>
-    <input type="text" ref={surname}/><br/>
+    <input type="text" ref={surname}/>
         </p>
         <p>
     <label>Имя</label>
-    <input type="text" ref={name}/><br/>
+    <input type="text" ref={name}/>
         </p>
         <p>
     <label>Отчество</label>
-    <input type="text" ref={patronymic}/><br/>
+    <input type="text" ref={patronymic}/>
         </p>
         <p>
     <label>Пол</label>
     <select ref={sex}>
       <option value="man">Мужской</option>
       <option value="female">Женский</option>
-    </select><br/>
+    </select>
         </p>
         <p>
     <label>Номер и серия паспорта</label>
-    <input type="text" ref={pasport}/><br/>
+    <input type="text" ref={pasport}/>
         </p>
         <p>
     <label>Дата рождения</label>
-    <input type="date" ref={birthday}/><br/>
+    <input type="date" ref={birthday}/>
         </p>
         <p>
     <label>Домашний адрес</label>
-    <input type="text" ref={home}/><br/>
+    <input type="text" ref={home}/>
         </p>
         <p>
     <label>Номер телефона</label>
-    <input type="text" ref={phone}/><br/>
+    <input type="text" ref={phone}/>
         </p>
         <p>
     <label>Электронная почта</label>
