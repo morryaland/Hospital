@@ -1,18 +1,20 @@
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-import PacientForm from './PacientForm.js';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AppHeader from './AppHeader';
+import PacientForm from './PacientForm';
+import PacientShow from './PacientShow';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App-header">
-        <Link to="pacient">Регистрация пациентов</Link>
-        <Link to="hospitalizacion">Госпитализация</Link>
-        <Link to="event">Направление пациентов</Link>
-      </div>
       <Routes>
-        <Route path="pacient" element={<PacientForm/>}/>
-        <Route path="/" element={null}/>
+        <Route path="/" element={<AppHeader />}>
+          <Route path="pacient">
+            <Route index element={<PacientForm />}/>
+            <Route path="*" element={<PacientShow id={window.location.href.replace( /.*\//g, '')}/>}/>
+          </Route>
+          <Route path="*" element={<p>Error 404</p>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

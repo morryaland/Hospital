@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
 import PersonForm from './PersonForm';
 import CONFIG from "./config.json"
+import QRCode from 'qrcodejs';
 
 function PacientForm()
 {
   const [personId, setPersonId] = useState(-1);
+  const [qrcode, setQrcode] = useState(-1);
   const personFormRef = useRef(null);
   const pacientFormRef = useRef(null);
 
@@ -35,6 +37,7 @@ function PacientForm()
       console.error(response.statusText);
       return;
     }
+    setQrcode(new QRCode().makeCode(`${window.location.href}/${response.json()}`));
   }
 
   async function SubmitForms()
@@ -45,6 +48,7 @@ function PacientForm()
 
   return (
     <div>
+      <img height="150" width="150" src={qrcode} alt=""/>
       <PersonForm formRef={personFormRef} setPersonId={setPersonId} />
       <form ref={pacientFormRef} onSubmit={CreatePacient}>
         <p>
