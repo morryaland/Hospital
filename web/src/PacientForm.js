@@ -6,7 +6,7 @@ import QRCode from 'qrcode';
 function PacientForm()
 {
   const [personId, setPersonId] = useState(-1);
-  const [qrcode, setQrcode] = useState(-1);
+  const [qrcode, setQrcode] = useState();
   const personFormRef = useRef(null);
   const pacientFormRef = useRef(null);
 
@@ -53,7 +53,7 @@ function PacientForm()
 
   return (
     <div>
-      <img height="150" width="150" src={qrcode} alt=""/>
+      <img height="150" width="150" src={qrcode} alt="QR code"/>
       <PersonForm formRef={personFormRef} setPersonId={setPersonId} />
       <form ref={pacientFormRef} onSubmit={CreatePacient}>
         <p>
