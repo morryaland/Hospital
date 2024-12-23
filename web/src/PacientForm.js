@@ -14,6 +14,8 @@ function PacientForm()
   const nextEntry = useRef();
   const policyNumber = useRef();
   const policyValidity = useRef();
+  const cardNumber = useRef();
+  const cardValidity = useRef();
   const diagnostics = useRef();
   const medicalHistory = useRef();
 
@@ -29,6 +31,8 @@ function PacientForm()
         nextEntry: nextEntry.current.value,
         policyNumber: policyNumber.current.value,
         policyValidity: policyValidity.current.value,
+        cardNumber: cardNumber.current.value,
+        cardValidity: cardValidity.current.value,
         diagnostics: diagnostics.current.value,
         medicalHistory: medicalHistory.current.value
       })
@@ -58,7 +62,7 @@ function PacientForm()
         </p>
         <p>
         <label>Слудующая запись</label>
-        <input type="date" ref={nextEntry}/>
+        <input type="datetime-local" ref={nextEntry}/>
         </p>
         <p>
         <label>Номер страхового полиса</label>
@@ -67,6 +71,14 @@ function PacientForm()
         <p>
         <label>Действие страхового полиса</label>
         <input type="date" ref={policyValidity}/>
+        </p>
+        <p>
+        <label>Номер мед. карты</label>
+        <input type="text" ref={cardNumber}/>
+        </p>
+        <p>
+        <label>Серия смед. карты</label>
+        <input type="text" ref={cardValidity} />
         </p>
         <p>
         <label>Диагноз</label>

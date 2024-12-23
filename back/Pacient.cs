@@ -2,15 +2,15 @@
 {
     internal record class Pacient
     {
-        private int count;
-
-        public int pacientId { get { return count++; } }
-        public string? diagnostics;
-        public DateTime lastEntry;
-        public string? medicalHistory;
-        public DateTime nextEntry;
-        public int personId;
-        public string? policyNumber;
-        public DateTime policyValidity;
+        public int pacientId { get; set; }
+        public string? diagnostics { get; set; }
+        public string? lastEntry { get; set; }
+        public string? medicalHistory { get; set; }
+        public string? nextEntry { get; set; }
+        public int personId { get; set; }
+        public string policyNumber { get; set; }
+        public string policyValidity { get; set; }
+        public string cardNumber { get; set; }
+        public string? cardValidity { get; set; }
     }
 }

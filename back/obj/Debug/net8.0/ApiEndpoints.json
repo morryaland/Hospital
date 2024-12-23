@@ -1,18 +1,12 @@
 [
   {
     "ContainingType": "back.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_2",
+    "Method": "\u003CMain\u003Eb__0_3",
     "RelativePath": "api/pacient/create",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pacient",
-        "Type": "back.Pacient",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.String",
@@ -25,18 +19,12 @@
   },
   {
     "ContainingType": "back.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_1",
+    "Method": "\u003CMain\u003Eb__0_2",
     "RelativePath": "api/person/create",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "person",
-        "Type": "back.Person",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.String",
