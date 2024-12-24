@@ -1,4 +1,4 @@
-﻿import { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import PersonForm from './PersonForm';
 import CONFIG from "./config.json"
 import QRCode from 'qrcode';
@@ -7,8 +7,6 @@ function PacientForm()
 {
   const [personId, setPersonId] = useState(-1);
   const [qrcode, setQrcode] = useState();
-  const personFormRef = useRef(null);
-  const pacientFormRef = useRef(null);
 
   const lastEntry = useRef();
   const nextEntry = useRef();
@@ -41,21 +39,17 @@ function PacientForm()
       console.error(response.statusText);
       return;
     }
-      QRCode.toDataURL(`${window.location.href}/${response.json().pacientId}`, (err, url) => {
-          setQrcode(url);
-      });
-  }
-  function SubmitForms()
-  {
-    personFormRef.current.requestSubmit();
-    pacientFormRef.current.requestSubmit();
+    QRCode.toDataURL(`${window.location.href}/${response.json().pacientId}`, (err, url) => {
+      setQrcode(url);
+    });
   }
 
   return (
     <div>
       <img height="150" width="150" src={qrcode} alt="QR code"/>
-      <PersonForm formRef={personFormRef} setPersonId={setPersonId} />
-      <form ref={pacientFormRef} onSubmit={CreatePacient}>
+      <PersonForm setPersonId={setPersonId} />
+      ID: {personId}
+      <form onSubmit={CreatePacient}>
         <p>
         <label>Последняя запись</label>
         <input type="date" ref={lastEntry}/>
@@ -88,8 +82,10 @@ function PacientForm()
         <label>История болезни</label>
         <textarea ref={medicalHistory}/>
         </p>
+        <p>
+        <button type="submit">Добавить пациента</button>
+        </p>
       </form>
-      <button onClick={SubmitForms}>Добавить</button>
     </div>
   );
 }

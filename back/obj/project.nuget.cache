@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "iU3G+yMxftw=",
+  "dgSpecHash": "nzOKIoeI2UdhxLmm70hiTwDxJCrVKPixyD7zzhuXFrporJcsGHUV+JqvhO29M4IFxIYUkOggz2G16kh7vyEZ4A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\muly\\repos\\Hospital\\back\\back.csproj",
+  "projectFilePath": "/home/muly/code/sql/Hospital/back/back.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\muly\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
-    "C:\\Users\\muly\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
-    "C:\\Users\\muly\\.nuget\\packages\\mysqlconnector\\2.4.0\\mysqlconnector.2.4.0.nupkg.sha512"
+    "/home/muly/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/home/muly/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "/home/muly/.nuget/packages/mysqlconnector/2.4.0/mysqlconnector.2.4.0.nupkg.sha512"
   ],
   "logs": []
 }

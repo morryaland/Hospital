@@ -37,7 +37,8 @@ function PersonForm(props)
       console.error(response.statusText);
       return;
     }
-    props.setPersonId(response.json().personId);
+    let res = await response.json();
+    props.setPersonId(res.personId);
   }
 
   function UploadPhoto(e)
@@ -50,7 +51,7 @@ function PersonForm(props)
   }
 
   return (
-  <form ref={props.formRef} onSubmit={CreatePerson}>
+  <form onSubmit={CreatePerson}>
         <p>
     <label>Фото</label><br/>
     <input type="file" onChange={UploadPhoto}/><br/>
@@ -94,6 +95,9 @@ function PersonForm(props)
         <p>
     <label>Электронная почта</label>
     <input type="email" ref={email}/>
+        </p>
+        <p>
+        <button type="submit">Добавить</button>
         </p>
   </form>);
 }
