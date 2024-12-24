@@ -39,7 +39,8 @@ function PacientForm()
       console.error(response.statusText);
       return;
     }
-    QRCode.toDataURL(`${window.location.href}/${response.json().pacientId}`, (err, url) => {
+    let res = await response.json();
+    QRCode.toDataURL(`${window.location.href}/${res.pacientId}`, (err, url) => {
       setQrcode(url);
     });
   }

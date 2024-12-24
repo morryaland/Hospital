@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import CONFIG from './config.json';
 
 function PacientShow(props)
@@ -21,7 +21,7 @@ function PacientShow(props)
   const [medicalHistory, setMedicalHistory] = useState();
   (async function ()
   {
-    const response = await fetch(`${CONFIG.backendUrl}/api/pacient/show?id=${props.id}`, {
+    const response = await fetch(`${CONFIG.backendUrl}/api/pacient/${props.id}`, {
       method: "GET",
       headers: { "Accept": "application/json" }
     });
@@ -29,7 +29,7 @@ function PacientShow(props)
       console.error(response.statusText);
       return;
     }
-    let pacient = response.json();
+    let pacient = await response.json();
     setPhoto(pacient.photo);
     setSurname(pacient.surname);
     setName(pacient.name);

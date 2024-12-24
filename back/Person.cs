@@ -1,4 +1,8 @@
-﻿namespace back
+﻿using System.Text;
+using System.IO;
+using System.Web;
+
+namespace back
 {
     internal record class Person
     {
@@ -7,7 +11,7 @@
         public string? email { get; set; }
         public string? home { get; set; }
         public string name { get; set; } = "unnamed";
-        private string pasport { get; set; } = "0 0";
+        public string pasport { get; set; } = "0 0";
         public int PasportNumber { get { return Convert.ToInt32(pasport?.Split(' ')[0]); } }
         public int PasportSerial { get { return Convert.ToInt32(pasport?.Split(' ')[1]); } }
         public string? patronymic { get; set; } 
@@ -33,6 +37,11 @@
             if (data.Length > 65535)
                 return null;
             return data;
+        }
+        public static string ConvertByteArrayToUrlData(byte[] byteArray)
+        {
+           string base64String = Convert.ToBase64String(byteArray);
+    return $"data:image;base64,{base64String}";
         }
     }
 }

@@ -71,6 +71,34 @@ namespace back
                 return $"{{\"pacientId\": {ret.GetInt32(0)}}}";
             });
 
+            app.MapGet("/api/pacient/{id:int}", async (int id, HttpContext context, MySqlConnection connection) =>
+            {
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM Pacient JOIN Person;";
+
+                await connection.OpenAsync();
+                using var ret = await command.ExecuteReaderAsync();
+                ret.Read();
+
+                return JsonSerializer.Serialize(new {
+                    photo = Person.ConvertByteArrayToUrlData((byte[])ret["Photo"]),
+                    name = ret.GetString("Name"),
+                    surname = ret.GetString("SurName"),
+                    patronymic = ret.GetString("Patronymic"),
+                    sex = ret.GetString("Sex"),
+                    pasport = $"{ret["PasportNumber"]} {ret["PasportSerial"]}",
+                    birthday = ret["Birthday"],
+                    home = ret.GetString("HomeAddress"),
+                    phone = ret.GetString("PhoneNumber"),
+                    email = ret.GetString("Email"),
+                    lastEntry = ret["LastAppeal"],
+                    nextEntry = ret["NextAppeal"],
+                    policyNumber = ret.GetInt32("InsurancePolicyNumber"),
+                    policyValidity = ret["InsurancePolicyExpiration"],
+                    diagnostics = ret.GetString("Diagnosis"),
+                    medicalHistory = ret.GetString("MedicalHistory")
+              });
+            });
             app.Run();
         }
     }
